@@ -1,4 +1,8 @@
 import {Component, OnInit,AfterViewInit,trigger,state,style,transition,animate,keyframes} from '@angular/core';
+import { Property } from '../../property';
+import { PropiedadesService } from '../../propiedades.service';
+import { Router } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -46,4 +50,15 @@ import {Component, OnInit,AfterViewInit,trigger,state,style,transition,animate,k
     ]
 })
 
-export class TableComponent{ }
+export class TableComponent{ 
+    constructor(private propiedadesService: PropiedadesService, private router : Router,private activatedRoute : ActivatedRoute) {
+            this.getProperties();
+        }
+    getProperties() : void {
+            this.propiedadesService.getProperties().then(properties => this.propiedades = properties);
+        }
+    propiedades: Property[];
+    propDetail(property) : void {
+        this.router.navigate(['../user', property.LEGAJO],{relativeTo : this.activatedRoute});
+    }
+}

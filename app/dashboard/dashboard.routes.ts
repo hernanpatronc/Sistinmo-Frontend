@@ -12,7 +12,7 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
 export const MODULE_ROUTES: Route[] =[
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: HomeComponent },
-    { path: 'user', component: UserComponent },
+    { path: 'user/:legajo', component: UserComponent },
     { path: 'table', component: TableComponent },
     { path: 'icons', component: IconsComponent },
     { path: 'notifications', component: NotificationsComponent },

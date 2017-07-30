@@ -1,4 +1,7 @@
 import { Component,state,style,animate,transition, trigger, keyframes } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import { Property } from '../../property';
+import { PropiedadesService } from '../../propiedades.service';
 
 @Component({
     moduleId: module.id,
@@ -47,4 +50,13 @@ import { Component,state,style,animate,transition, trigger, keyframes } from '@a
         ]
     })
 
-    export class UserComponent{ }
+    export class UserComponent{ 
+        constructor(private activatedRoute : ActivatedRoute, private propiedadesService:PropiedadesService){}
+        legajo:string;
+        propiedad : Property;
+        ngOnInit(){
+            this.legajo = this.activatedRoute.snapshot.params['legajo'];
+            this.propiedadesService.getProperty(this.legajo).then(propiedad => this.propiedad = propiedad[0]));
+            
+        }
+    }

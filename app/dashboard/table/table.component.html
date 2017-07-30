@@ -1,65 +1,80 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
+             <div class="col-md-12">
+                <div class="card">
+                    <div class="content">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Filtrar por Columna</label>
+                                        <select class="form-control">
+                                            <option value="CA">Campos</option>
+                                            <option value="CQ">Casas</option>
+                                            <option value="DE">Departamentos</option>
+                                            <option value="GA">Depositos y Galpones</option>
+                                            <option value="LO">Locales</option>
+                                            <option value="OF">Oficinas</option>
+                                            <option value="PH">PH</option>
+                                            <option value="MLA50547">Quintas</option>
+                                            <option value="MLA1493">Terrenos y Lotes</option>
+                                            <option value="MLA1892">Otros Inmuebles</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Filtrar por valor</label>
+                                        <select class="form-control">
+                                            <option value="CV">Compraventa</option>
+                                            <option value="AL">Alquiler</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Campo de Búsqueda</label>
+                                        <input type="text" class="form-control" placeholder="Busqueda" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>&nbsp;</label>
+                                        <button type="submit" class="btn btn-info btn-block btn-fill pull-right"><i class="fa fa-search"></i>Buscar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-12">
                 <div class="card" [@cardtable1]>
                     <div class="header">
                         <h4 class="title">Striped Table with Hover</h4>
                         <p class="category">Here is a subtitle for this table</p>
                     </div>
+                    
                     <div class="content table-responsive table-full-width">
                         <table class="table table-hover table-striped">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Salary</th>
-                                    <th>Country</th>
-                                    <th>City</th>
+                                    <th>Legajo</th>
+                                    <th>Nombre</th>
+                                    <th>Oferente/Requerente</th>
+                                    <th>Fecha</th>
+                                    <th>Operacion</th>
                                 </tr>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Dakota Rice</td>
-                                    <td>$36,738</td>
-                                    <td>Niger</td>
-                                    <td>Oud-Turnhout</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Minerva Hooper</td>
-                                    <td>$23,789</td>
-                                    <td>Curaçao</td>
-                                    <td>Sinaai-Waas</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Sage Rodriguez</td>
-                                    <td>$56,142</td>
-                                    <td>Netherlands</td>
-                                    <td>Baileux</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Philip Chaney</td>
-                                    <td>$38,735</td>
-                                    <td>Korea, South</td>
-                                    <td>Overland Park</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Doris Greene</td>
-                                    <td>$63,542</td>
-                                    <td>Malawi</td>
-                                    <td>Feldkirchen in Kärnten</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Mason Porter</td>
-                                    <td>$78,615</td>
-                                    <td>Chile</td>
-                                    <td>Gloucester</td>
-                                </tr>
+                                    <tr (click)="propDetail(prop)" class='button' *ngFor="let prop of propiedades">
+                                        <td>{{prop.LEGAJO}}</td>
+                                        <td>{{prop.NOMBRE_INM}}</td>
+                                        <td>{{prop.OFER_REQUE}}</td>
+                                        <td>{{prop.FECHA}}</td>
+                                        <td>{{prop.OPERACION}}</td>
+                                    </tr>
                             </tbody>
                         </table>
 

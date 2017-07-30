@@ -9,9 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var propiedades_service_1 = require('../../propiedades.service');
+var router_1 = require('@angular/router');
+var router_2 = require('@angular/router');
 var TableComponent = (function () {
-    function TableComponent() {
+    function TableComponent(propiedadesService, router, activatedRoute) {
+        this.propiedadesService = propiedadesService;
+        this.router = router;
+        this.activatedRoute = activatedRoute;
+        this.getProperties();
     }
+    TableComponent.prototype.getProperties = function () {
+        var _this = this;
+        this.propiedadesService.getProperties().then(function (properties) { return _this.propiedades = properties; });
+    };
+    TableComponent.prototype.propDetail = function (property) {
+        this.router.navigate(['../user', property.LEGAJO], { relativeTo: this.activatedRoute });
+    };
     TableComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -58,7 +72,7 @@ var TableComponent = (function () {
                 ])
             ]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [propiedades_service_1.PropiedadesService, router_1.Router, router_2.ActivatedRoute])
     ], TableComponent);
     return TableComponent;
 }());

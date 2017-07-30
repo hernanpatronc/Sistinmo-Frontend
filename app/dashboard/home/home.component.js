@@ -13,7 +13,11 @@ var initDemo = require('../../../assets/js/charts.js');
 var initNotify = require('../../../assets/js/notify.js');
 var HomeComponent = (function () {
     function HomeComponent() {
+        this.tasks = ["Unfollow 5 enemies from twitter", "Read \"Following makes Medium better\"", "Create 4 Invisible User Experiences you Never Knew About", "Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit", "Lines From Great Russian Literature? Or E-mails From My Boss?", "Sign contract for \"What are conference organizers afraid of?\""];
     }
+    HomeComponent.prototype.deleteTask = function (task) {
+        this.tasks.splice(this.tasks.indexOf(task), 1);
+    };
     HomeComponent.prototype.ngOnInit = function () {
         // $.getScript('../../../assets/js/bootstrap-checkbox-radio-switch.js');
         // $.getScript('../../../assets/js/light-bootstrap-dashboard.js');

@@ -4,27 +4,41 @@
             <div class="col-md-8">
                 <div class="card" [@carduserprofile]>
                     <div class="header">
-                        <h4 class="title">Edit Profile</h4>
+                        <h4 class="title">Propiedad: {{this.legajo}}</h4>
                     </div>
                     <div class="content">
                         <form>
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <label>Company (disabled)</label>
-                                        <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
+                                        <label>Tipo de Propiedad</label>
+                                        <select class="form-control">
+                                            <option value="CA">Campos</option>
+                                            <option value="CQ">Casas</option>
+                                            <option value="DE">Departamentos</option>
+                                            <option value="GA">Depositos y Galpones</option>
+                                            <option value="LO">Locales</option>
+                                            <option value="OF">Oficinas</option>
+                                            <option value="PH">PH</option>
+                                            <option value="MLA50547">Quintas</option>
+                                            <option value="MLA1493">Terrenos y Lotes</option>
+                                            <option value="MLA1892">Otros Inmuebles</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" class="form-control" placeholder="Username" value="michael23">
+                                        <label>Nombre</label>
+                                        <input *ngIf="this.propiedad" type="text" class="form-control" placeholder="Nombre" value="{{this.propiedad.NOMBRE_INM}}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" placeholder="Email">
+                                        <label>Tipo de operacion</label>
+                                        <select class="form-control">
+                                            <option value="CV">Compraventa</option>
+                                            <option value="AL">Alquiler</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -32,14 +46,20 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>First Name</label>
-                                        <input type="text" class="form-control" placeholder="Company" value="Mike">
+                                        <label>Acceso</label>
+                                        <select class="form-control">
+                                            <option value="CA">Asfalto</option>
+                                            <option value="CQ">Arena</option>
+                                            <option value="DE">Tierra</option>
+                                            <option value="GA">Ripio</option>
+                                            <option value="LO">Otro</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Last Name</label>
-                                        <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                                        <label>Oferente/Requerente</label>
+                                        <input *ngIf="this.propiedad" type="text" class="form-control" placeholder="Last Name" value="{{this.propiedad.OFER_REQUE}}">
                                     </div>
                                 </div>
                             </div>
@@ -47,8 +67,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Address</label>
-                                        <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                        <label>Direccion</label>
+                                        <input type="text" class="form-control" placeholder="Home Address" value="">
                                     </div>
                                 </div>
                             </div>
@@ -56,8 +76,8 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>City</label>
-                                        <input type="text" class="form-control" placeholder="City" value="Mike">
+                                        <label>Operacion</label>
+                                        <input *ngIf="this.propiedad" type="text" class="form-control" placeholder="City" value="{{this.propiedad.OPERACION}}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -91,12 +111,12 @@
             <div class="col-md-4">
                 <div class="card card-user" [@cardprofile]>
                     <div class="image">
-                        <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+                        <img src="assets/img/full-screen-image-3.jpg" alt="..."/>
                     </div>
                     <div class="content">
                         <div class="author">
                             <a href="#">
-                                <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
+                                <img class="avatar border-gray" src="assets/img/Logo2.png" alt="..."/>
 
                                 <h4 class="title">Mike Andrew<br />
                                     <small>michael24</small>

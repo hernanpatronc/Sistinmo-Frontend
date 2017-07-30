@@ -9,9 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var propiedades_service_1 = require('../../propiedades.service');
 var UserComponent = (function () {
-    function UserComponent() {
+    function UserComponent(activatedRoute, propiedadesService) {
+        this.activatedRoute = activatedRoute;
+        this.propiedadesService = propiedadesService;
     }
+    UserComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.legajo = this.activatedRoute.snapshot.params['legajo'];
+        this.propiedadesService.getProperty(this.legajo).then(function (propiedad) { return _this.propiedad = propiedad[0]; });
+        ;
+    };
     UserComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -59,7 +69,7 @@ var UserComponent = (function () {
                 ])
             ]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, propiedades_service_1.PropiedadesService])
     ], UserComponent);
     return UserComponent;
 }());

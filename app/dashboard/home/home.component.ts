@@ -92,6 +92,10 @@ declare var $:any;
 })
 
 export class HomeComponent implements OnInit{
+    public tasks = ["Unfollow 5 enemies from twitter", "Read \"Following makes Medium better\"", "Create 4 Invisible User Experiences you Never Knew About","Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit","Lines From Great Russian Literature? Or E-mails From My Boss?","Sign contract for \"What are conference organizers afraid of?\""];
+    deleteTask(task) {
+        this.tasks.splice(this.tasks.indexOf(task), 1)
+    }
     ngOnInit() {
         // $.getScript('../../../assets/js/bootstrap-checkbox-radio-switch.js');
         // $.getScript('../../../assets/js/light-bootstrap-dashboard.js');
