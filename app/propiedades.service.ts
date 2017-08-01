@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 export class PropiedadesService {
     constructor(private http: Http) { }
     getProperties(): Promise<Property[]> {
-        return this.http.get("http://localhost:3001/propiedades")
+        return this.http.get("http://localhost:3002/propiedades")
              .toPromise()
              .then(response => response.json() as Property[])
              .catch(this.handleError);
@@ -18,7 +18,7 @@ export class PropiedadesService {
     }
 
     getProperty(legajo): Promise<Property[]> {
-        return this.http.get("http://localhost:3001/propiedades/" + legajo)
+        return this.http.get("http://localhost:3002/propiedades/" + legajo)
              .toPromise()
              .then(response => response.json() as Property[])
              .catch(this.handleError);

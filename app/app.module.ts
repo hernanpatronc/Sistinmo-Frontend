@@ -13,6 +13,7 @@ import { NavbarModule} from './shared/navbar/navbar.module';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { PropiedadesService } from './propiedades.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     imports:      [
@@ -21,6 +22,7 @@ import { PropiedadesService } from './propiedades.service';
         SidebarModule,
         NavbarModule,
         FooterModule,
+        FormsModule,
         HttpModule,
         RouterModule.forRoot([])
     ],

@@ -2,6 +2,7 @@ import { Component,state,style,animate,transition, trigger, keyframes } from '@a
 import {ActivatedRoute} from '@angular/router';
 import { Property } from '../../property';
 import { PropiedadesService } from '../../propiedades.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     moduleId: module.id,
@@ -53,10 +54,11 @@ import { PropiedadesService } from '../../propiedades.service';
     export class UserComponent{ 
         constructor(private activatedRoute : ActivatedRoute, private propiedadesService:PropiedadesService){}
         legajo:string;
-        propiedad : Property;
+        propiedad = new Property();
         ngOnInit(){
             this.legajo = this.activatedRoute.snapshot.params['legajo'];
-            this.propiedadesService.getProperty(this.legajo).then(propiedad => this.propiedad = propiedad[0]));
-            
+            console.log(this.legajo)
+            if (this.legajo != "new")
+                this.propiedadesService.getProperty(this.legajo).then(propiedad => this.propiedad = propiedad[0]);
         }
     }

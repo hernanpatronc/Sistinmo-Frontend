@@ -28,8 +28,8 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Nombre</label>
-                                        <input *ngIf="this.propiedad" type="text" class="form-control" placeholder="Nombre" value="{{this.propiedad.NOMBRE_INM}}">
+                                        <label>Legajo</label>
+                                        <input type="text" class="form-control" placeholder="Nombre" [ngModelOptions]="{standalone: true}" [(ngModel)]="this.propiedad.LEGAJO">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -59,7 +59,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Oferente/Requerente</label>
-                                        <input *ngIf="this.propiedad" type="text" class="form-control" placeholder="Last Name" value="{{this.propiedad.OFER_REQUE}}">
+                                        <input type="text" class="form-control" placeholder="Last Name" [ngModelOptions]="{standalone: true}" [(ngModel)]="this.propiedad.OFER_REQUE">
                                     </div>
                                 </div>
                             </div>
@@ -67,8 +67,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Direccion</label>
-                                        <input type="text" class="form-control" placeholder="Home Address" value="">
+                                        <label>Nombre</label>
+                                        <input type="text" class="form-control" placeholder="Home Address" [ngModelOptions]="{standalone: true}" [(ngModel)]="this.propiedad.NOMBRE_INM">
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Operacion</label>
-                                        <input *ngIf="this.propiedad" type="text" class="form-control" placeholder="City" value="{{this.propiedad.OPERACION}}">
+                                        <input type="text" class="form-control" placeholder="City" [ngModelOptions]="{standalone: true}" [(ngModel)]="this.propiedad.OPERACION">
                                     </div>
                                 </div>
                                 <div class="col-md-4">

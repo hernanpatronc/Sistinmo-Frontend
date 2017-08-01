@@ -20,6 +20,7 @@ var footer_module_1 = require('./shared/footer/footer.module');
 var navbar_module_1 = require('./shared/navbar/navbar.module');
 var common_1 = require('@angular/common');
 var propiedades_service_1 = require('./propiedades.service');
+var forms_1 = require('@angular/forms');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -31,6 +32,7 @@ var AppModule = (function () {
                 sidebar_module_1.SidebarModule,
                 navbar_module_1.NavbarModule,
                 footer_module_1.FooterModule,
+                forms_1.FormsModule,
                 http_1.HttpModule,
                 router_1.RouterModule.forRoot([])
             ],

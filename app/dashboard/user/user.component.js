@@ -10,17 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var property_1 = require('../../property');
 var propiedades_service_1 = require('../../propiedades.service');
 var UserComponent = (function () {
     function UserComponent(activatedRoute, propiedadesService) {
         this.activatedRoute = activatedRoute;
         this.propiedadesService = propiedadesService;
+        this.propiedad = new property_1.Property();
     }
     UserComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.legajo = this.activatedRoute.snapshot.params['legajo'];
-        this.propiedadesService.getProperty(this.legajo).then(function (propiedad) { return _this.propiedad = propiedad[0]; });
-        ;
+        console.log(this.legajo);
+        if (this.legajo != "new")
+            this.propiedadesService.getProperty(this.legajo).then(function (propiedad) { return _this.propiedad = propiedad[0]; });
     };
     UserComponent = __decorate([
         core_1.Component({

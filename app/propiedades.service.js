@@ -16,7 +16,7 @@ var PropiedadesService = (function () {
         this.http = http;
     }
     PropiedadesService.prototype.getProperties = function () {
-        return this.http.get("http://localhost:3001/propiedades")
+        return this.http.get("http://localhost:3002/propiedades")
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
@@ -26,7 +26,7 @@ var PropiedadesService = (function () {
         return Promise.reject(error.message || error);
     };
     PropiedadesService.prototype.getProperty = function (legajo) {
-        return this.http.get("http://localhost:3001/propiedades/" + legajo)
+        return this.http.get("http://localhost:3002/propiedades/" + legajo)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
