@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTES } from '../.././sidebar/sidebar-routes.config';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
     moduleId: module.id,
@@ -11,7 +12,7 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 export class NavbarComponent implements OnInit{
     private listTitles: any[];
     location: Location;
-    constructor(location:Location) {
+    constructor(location:Location, private router : Router) {
         this.location = location;
     }
     ngOnInit(){

@@ -4,7 +4,7 @@
             <div class="col-md-8">
                 <div class="card" [@carduserprofile]>
                     <div class="header">
-                        <h4 class="title">Propiedad: {{this.legajo}}</h4>
+                        <h4 class="title">Propiedad: {{this.propiedad.LEGAJO}}</h4>
                     </div>
                     <div class="content">
                         <form>
@@ -29,7 +29,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Legajo</label>
-                                        <input type="text" class="form-control" placeholder="Nombre" [ngModelOptions]="{standalone: true}" [(ngModel)]="this.propiedad.LEGAJO">
+                                        <input type="text" class="form-control" placeholder="Legajo" disabled [ngModelOptions]="{standalone: true}" [(ngModel)]="this.propiedad.LEGAJO">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
