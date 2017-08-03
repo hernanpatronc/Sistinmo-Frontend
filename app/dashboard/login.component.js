@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var authentication_service_1 = require('../authentication.service');
+var initNotify = require('../../assets/js/notify.js');
 var LoginComponent = (function () {
     function LoginComponent(route, router, authenticationService) {
         this.route = route;
@@ -25,7 +26,11 @@ var LoginComponent = (function () {
         var _this = this;
         this.authenticationService.login(this.user, this.password)
             .subscribe(function (data) {
-            _this.router.navigate(['./dashboard']);
+            if (localStorage.getItem('currentUser')) {
+                console.log("Redirect");
+                _this.router.navigate(['./dashboard']);
+                initNotify("Bienvenido " + JSON.parse(localStorage.getItem('currentUser')).alias, 2);
+            }
         }, function (error) {
         });
     };

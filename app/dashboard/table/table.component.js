@@ -24,7 +24,7 @@ var TableComponent = (function () {
         this.propiedadesService.getProperties().then(function (properties) { return _this.propiedades = properties; });
     };
     TableComponent.prototype.propDetail = function (property) {
-        this.router.navigate(['../user', property.LEGAJO], { relativeTo: this.activatedRoute });
+        this.router.navigate(['../property', property.LEGAJO], { relativeTo: this.activatedRoute });
     };
     TableComponent = __decorate([
         core_1.Component({

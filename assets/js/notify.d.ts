@@ -1,2 +1,2 @@
-declare function initNotify():void;
+declare function initNotify(message,color):void;
 export = initNotify;

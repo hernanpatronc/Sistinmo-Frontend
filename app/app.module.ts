@@ -14,7 +14,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { PropiedadesService } from './propiedades.service';
 import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from './authentication.service';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard, AdminGuard } from './auth.guard';
 
 
 @NgModule({
@@ -28,7 +28,7 @@ import { AuthGuard } from './auth.guard';
         RouterModule.forRoot([])
     ],
     declarations: [ AppComponent, DashboardComponent ],
-    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, PropiedadesService, AuthenticationService, AuthGuard],
+    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, PropiedadesService, AuthenticationService, AuthGuard, AdminGuard],
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

@@ -1,2 +1,2 @@
-declare function initDemo():void;
+declare function initDemo(series,label):void;
 export = initDemo;

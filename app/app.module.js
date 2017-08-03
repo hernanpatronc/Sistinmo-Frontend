@@ -37,7 +37,7 @@ var AppModule = (function () {
                 router_1.RouterModule.forRoot([])
             ],
             declarations: [app_component_1.AppComponent, dashboard_component_1.DashboardComponent],
-            providers: [{ provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy }, propiedades_service_1.PropiedadesService, authentication_service_1.AuthenticationService, auth_guard_1.AuthGuard],
+            providers: [{ provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy }, propiedades_service_1.PropiedadesService, authentication_service_1.AuthenticationService, auth_guard_1.AuthGuard, auth_guard_1.AdminGuard],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

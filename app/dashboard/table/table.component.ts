@@ -3,6 +3,7 @@ import { Property } from '../../property';
 import { PropiedadesService } from '../../propiedades.service';
 import { Router } from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     moduleId: module.id,
@@ -59,6 +60,6 @@ export class TableComponent{
         }
     propiedades: Property[];
     propDetail(property) : void {
-        this.router.navigate(['../user', property.LEGAJO],{relativeTo : this.activatedRoute});
+        this.router.navigate(['../property', property.LEGAJO],{relativeTo : this.activatedRoute});
     }
 }

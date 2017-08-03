@@ -11,21 +11,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
+var initNotify = require('../assets/js/notify.js');
 var AuthenticationService = (function () {
     function AuthenticationService(http) {
         this.http = http;
     }
-    AuthenticationService.prototype.login = function (usernamee, passworde) {
-        console.log(usernamee);
-        return this.http.post("http://localhost:3002/api/user", { username: usernamee, password: passworde })
+    AuthenticationService.prototype.login = function (username, password) {
+        return this.http.post("http://localhost:3002/api/user", { username: username, password: password })
             .map(function (response) {
             // login successful if there's a jwt token in the response
             var user = response.json();
-            console.log(user);
-            if (user && user.token) {
-                console.log(user.token);
+            if (user.success) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(user));
+                localStorage.setItem('currentUser', JSON.stringify(user.user));
+                localStorage.setItem('token', JSON.stringify(user.token));
+            }
+            else {
+                initNotify(user.message, 4);
             }
         });
     };

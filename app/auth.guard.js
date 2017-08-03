@@ -15,7 +15,6 @@ var AuthGuard = (function () {
         this.router = router;
     }
     AuthGuard.prototype.canActivate = function (route, state) {
-        console.log(localStorage.getItem('currentUser'));
         if (localStorage.getItem('currentUser')) {
             // logged in so return true
             return true;
@@ -31,4 +30,24 @@ var AuthGuard = (function () {
     return AuthGuard;
 }());
 exports.AuthGuard = AuthGuard;
+var AdminGuard = (function () {
+    function AdminGuard(router) {
+        this.router = router;
+    }
+    AdminGuard.prototype.canActivate = function (route, state) {
+        if (JSON.parse(localStorage.getItem('currentUser')).privileges == -1) {
+            // logged in so return true
+            return true;
+        }
+        // not logged in so redirect to login page with the return url
+        //this.router.navigate(['/login']);
+        return false;
+    };
+    AdminGuard = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [router_1.Router])
+    ], AdminGuard);
+    return AdminGuard;
+}());
+exports.AdminGuard = AdminGuard;
 //# sourceMappingURL=auth.guard.js.map

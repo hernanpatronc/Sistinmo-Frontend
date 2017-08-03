@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {AuthenticationService} from '../authentication.service';
-
+import initNotify = require('../../assets/js/notify.js');
 
 @Component({
     selector: 'my-login',
@@ -25,7 +25,11 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.user, this.password)
             .subscribe(
                 data => {
-                    this.router.navigate(['./dashboard']);
+                    if (localStorage.getItem('currentUser')){
+                        console.log("Redirect");
+                        this.router.navigate(['./dashboard']);
+                        initNotify("Bienvenido " + JSON.parse(localStorage.getItem('currentUser')).alias, 2);
+                    }
                 },
                 error => {
                     

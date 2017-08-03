@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Property } from './property';
+import { User } from './dashboard/user/user-model';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
@@ -16,11 +17,22 @@ export class PropiedadesService {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     }
-
+    getStatistics():Promise<Object>{
+        return this.http.get("http://localhost:3002/estadisticas")
+             .toPromise()
+             .then(response => response.json())
+             .catch(this.handleError);
+    }
     getProperty(legajo): Promise<Property[]> {
         return this.http.get("http://localhost:3002/propiedades/" + legajo)
              .toPromise()
              .then(response => response.json() as Property[])
+             .catch(this.handleError);
+    }
+    getUsers() : Promise<User[]> {
+        return this.http.get("http://localhost:3002/api/user")
+             .toPromise()
+             .then(response => response.json().users as User[])
              .catch(this.handleError);
     }
 }

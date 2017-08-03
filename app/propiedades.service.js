@@ -25,10 +25,22 @@ var PropiedadesService = (function () {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     };
+    PropiedadesService.prototype.getStatistics = function () {
+        return this.http.get("http://localhost:3002/estadisticas")
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
     PropiedadesService.prototype.getProperty = function (legajo) {
         return this.http.get("http://localhost:3002/propiedades/" + legajo)
             .toPromise()
             .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    PropiedadesService.prototype.getUsers = function () {
+        return this.http.get("http://localhost:3002/api/user")
+            .toPromise()
+            .then(function (response) { return response.json().users; })
             .catch(this.handleError);
     };
     PropiedadesService = __decorate([

@@ -1,7 +1,7 @@
 import {Component, OnInit,trigger,state,style,transition,animate,keyframes, group} from '@angular/core';
 import initDemo = require('../../../assets/js/charts.js');
 import initNotify = require('../../../assets/js/notify.js');
-
+import { PropiedadesService } from '../../propiedades.service';
 
 declare var $:any;
 
@@ -92,21 +92,28 @@ declare var $:any;
 })
 
 export class HomeComponent implements OnInit{
-    public tasks = ["Unfollow 5 enemies from twitter", "Read \"Following makes Medium better\"", "Create 4 Invisible User Experiences you Never Knew About","Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit","Lines From Great Russian Literature? Or E-mails From My Boss?","Sign contract for \"What are conference organizers afraid of?\""];
+    constructor(private propiedadesService : PropiedadesService){}
+    public tasks = []//["Unfollow 5 enemies from twitter", "Read \"Following makes Medium better\"", "Create 4 Invisible User Experiences you Never Knew About","Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit","Lines From Great Russian Literature? Or E-mails From My Boss?","Sign contract for \"What are conference organizers afraid of?\""];
     deleteTask(task) {
         this.tasks.splice(this.tasks.indexOf(task), 1)
     }
+    minutos:Date;
     ngOnInit() {
         // $.getScript('../../../assets/js/bootstrap-checkbox-radio-switch.js');
         // $.getScript('../../../assets/js/light-bootstrap-dashboard.js');
 
         $('[data-toggle="checkbox"]').each(function () {
             if($(this).data('toggle') == 'switch') return;
-
+            
             var $checkbox = $(this);
             $checkbox.checkbox();
         });
-        initDemo();
-        initNotify();
+        this.propiedadesService.getStatistics().then(objeto => initDemo(objeto[0],objeto[1]) );
+        this.minutos = new Date();
+    }
+    getCurrentTime() : number {
+        var now = new Date();
+        return Math.round((now.getTime() - this.minutos.getTime())/60000);
+         
     }
 }

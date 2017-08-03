@@ -9,21 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var property_1 = require('../../property');
 var propiedades_service_1 = require('../../propiedades.service');
+var router_1 = require('@angular/router');
+var router_2 = require('@angular/router');
 var UserComponent = (function () {
-    function UserComponent(activatedRoute, propiedadesService) {
-        this.activatedRoute = activatedRoute;
+    function UserComponent(propiedadesService, router, activatedRoute) {
         this.propiedadesService = propiedadesService;
-        this.propiedad = new property_1.Property();
+        this.router = router;
+        this.activatedRoute = activatedRoute;
+        this.getUsers();
     }
-    UserComponent.prototype.ngOnInit = function () {
+    UserComponent.prototype.getUsers = function () {
         var _this = this;
-        this.legajo = this.activatedRoute.snapshot.params['legajo'];
-        console.log(this.legajo);
-        if (this.legajo != "new")
-            this.propiedadesService.getProperty(this.legajo).then(function (propiedad) { return _this.propiedad = propiedad[0]; });
+        this.propiedadesService.getUsers().then(function (users) { return _this.users = users; });
+    };
+    UserComponent.prototype.updateUserPriv = function (user) {
+        //this.router.navigate(['../user', property.LEGAJO],{relativeTo : this.activatedRoute});
     };
     UserComponent = __decorate([
         core_1.Component({
@@ -31,15 +32,14 @@ var UserComponent = (function () {
             selector: 'user-cmp',
             templateUrl: 'user.component.html',
             animations: [
-                core_1.trigger('carduserprofile', [
+                core_1.trigger('cardtable1', [
                     core_1.state('*', core_1.style({
                         '-ms-transform': 'translate3D(0px, 0px, 0px)',
                         '-webkit-transform': 'translate3D(0px, 0px, 0px)',
                         '-moz-transform': 'translate3D(0px, 0px, 0px)',
                         '-o-transform': 'translate3D(0px, 0px, 0px)',
                         transform: 'translate3D(0px, 0px, 0px)',
-                        opacity: 1
-                    })),
+                        opacity: 1 })),
                     core_1.transition('void => *', [
                         core_1.style({ opacity: 0,
                             '-ms-transform': 'translate3D(0px, 150px, 0px)',
@@ -48,10 +48,10 @@ var UserComponent = (function () {
                             '-o-transform': 'translate3D(0px, 150px, 0px)',
                             transform: 'translate3D(0px, 150px, 0px)',
                         }),
-                        core_1.animate('0.3s 0s ease-out'),
+                        core_1.animate('0.3s 0s ease-out')
                     ])
                 ]),
-                core_1.trigger('cardprofile', [
+                core_1.trigger('cardtable2', [
                     core_1.state('*', core_1.style({
                         '-ms-transform': 'translate3D(0px, 0px, 0px)',
                         '-webkit-transform': 'translate3D(0px, 0px, 0px)',
@@ -72,7 +72,7 @@ var UserComponent = (function () {
                 ])
             ]
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, propiedades_service_1.PropiedadesService])
+        __metadata('design:paramtypes', [propiedades_service_1.PropiedadesService, router_1.Router, router_2.ActivatedRoute])
     ], UserComponent);
     return UserComponent;
 }());

@@ -10,10 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var initDemo = require('../../../assets/js/charts.js');
-var initNotify = require('../../../assets/js/notify.js');
+var propiedades_service_1 = require('../../propiedades.service');
 var HomeComponent = (function () {
-    function HomeComponent() {
-        this.tasks = ["Unfollow 5 enemies from twitter", "Read \"Following makes Medium better\"", "Create 4 Invisible User Experiences you Never Knew About", "Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit", "Lines From Great Russian Literature? Or E-mails From My Boss?", "Sign contract for \"What are conference organizers afraid of?\""];
+    function HomeComponent(propiedadesService) {
+        this.propiedadesService = propiedadesService;
+        this.tasks = []; //["Unfollow 5 enemies from twitter", "Read \"Following makes Medium better\"", "Create 4 Invisible User Experiences you Never Knew About","Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit","Lines From Great Russian Literature? Or E-mails From My Boss?","Sign contract for \"What are conference organizers afraid of?\""];
     }
     HomeComponent.prototype.deleteTask = function (task) {
         this.tasks.splice(this.tasks.indexOf(task), 1);
@@ -27,8 +28,12 @@ var HomeComponent = (function () {
             var $checkbox = $(this);
             $checkbox.checkbox();
         });
-        initDemo();
-        initNotify();
+        this.propiedadesService.getStatistics().then(function (objeto) { return initDemo(objeto[0], objeto[1]); });
+        this.minutos = new Date();
+    };
+    HomeComponent.prototype.getCurrentTime = function () {
+        var now = new Date();
+        return Math.round((now.getTime() - this.minutos.getTime()) / 60000);
     };
     HomeComponent = __decorate([
         core_1.Component({
@@ -114,7 +119,7 @@ var HomeComponent = (function () {
                 ])
             ]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [propiedades_service_1.PropiedadesService])
     ], HomeComponent);
     return HomeComponent;
 }());
