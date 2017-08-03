@@ -28,7 +28,7 @@ var HomeComponent = (function () {
             var $checkbox = $(this);
             $checkbox.checkbox();
         });
-        this.propiedadesService.getStatistics().then(function (objeto) { return initDemo(objeto[0], objeto[1]); });
+        this.propiedadesService.getStatistics().then(function (objeto) { return initDemo(objeto.TIPO_INMU[1], objeto.TIPO_INMU[0], null, null, [objeto.PRODUCTORES[1], objeto.PRODUCTORES[2], objeto.PRODUCTORES[3]], objeto.PRODUCTORES[0]); });
         this.minutos = new Date();
     };
     HomeComponent.prototype.getCurrentTime = function () {
@@ -60,25 +60,25 @@ var HomeComponent = (function () {
                         core_1.animate('0.3s 0s ease-out')
                     ])
                 ]),
-                core_1.trigger('carduser', [
-                    core_1.state('*', core_1.style({
+                /*trigger('carduser', [
+                    state('*', style({
                         '-ms-transform': 'translate3D(0px, 0px, 0px)',
                         '-webkit-transform': 'translate3D(0px, 0px, 0px)',
                         '-moz-transform': 'translate3D(0px, 0px, 0px)',
-                        '-o-transform': 'translate3D(0px, 0px, 0px)',
-                        transform: 'translate3D(0px, 0px, 0px)',
-                        opacity: 1 })),
-                    core_1.transition('void => *', [
-                        core_1.style({ opacity: 0,
-                            '-ms-transform': 'translate3D(0px, 150px, 0px)',
-                            '-webkit-transform': 'translate3D(0px, 150px, 0px)',
-                            '-moz-transform': 'translate3D(0px, 150px, 0px)',
-                            '-o-transform': 'translate3D(0px, 150px, 0px)',
-                            transform: 'translate3D(0px, 150px, 0px)',
-                        }),
-                        core_1.animate('0.3s 0.25s ease-out')
-                    ])
-                ]),
+                        '-o-transform':'translate3D(0px, 0px, 0px)',
+                        transform:'translate3D(0px, 0px, 0px)',
+                        opacity: 1})),
+                        transition('void => *', [
+                            style({opacity: 0,
+                                '-ms-transform': 'translate3D(0px, 150px, 0px)',
+                                '-webkit-transform': 'translate3D(0px, 150px, 0px)',
+                                '-moz-transform': 'translate3D(0px, 150px, 0px)',
+                                '-o-transform':'translate3D(0px, 150px, 0px)',
+                                transform:'translate3D(0px, 150px, 0px)',
+                            }),
+                            animate('0.3s 0.25s ease-out')
+                        ])
+                ]),*/
                 core_1.trigger('card2014sales', [
                     core_1.state('*', core_1.style({
                         '-ms-transform': 'translate3D(0px, 0px, 0px)',
@@ -98,25 +98,6 @@ var HomeComponent = (function () {
                         core_1.animate('0.3s 0.5s ease-out')
                     ])
                 ]),
-                core_1.trigger('cardtasks', [
-                    core_1.state('*', core_1.style({
-                        '-ms-transform': 'translate3D(0px, 0px, 0px)',
-                        '-webkit-transform': 'translate3D(0px, 0px, 0px)',
-                        '-moz-transform': 'translate3D(0px, 0px, 0px)',
-                        '-o-transform': 'translate3D(0px, 0px, 0px)',
-                        transform: 'translate3D(0px, 0px, 0px)',
-                        opacity: 1 })),
-                    core_1.transition('void => *', [
-                        core_1.style({ opacity: 0,
-                            '-ms-transform': 'translate3D(0px, 150px, 0px)',
-                            '-webkit-transform': 'translate3D(0px, 150px, 0px)',
-                            '-moz-transform': 'translate3D(0px, 150px, 0px)',
-                            '-o-transform': 'translate3D(0px, 150px, 0px)',
-                            transform: 'translate3D(0px, 150px, 0px)',
-                        }),
-                        core_1.animate('0.3s 0.75s ease-out')
-                    ])
-                ])
             ]
         }), 
         __metadata('design:paramtypes', [propiedades_service_1.PropiedadesService])

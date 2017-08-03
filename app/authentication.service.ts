@@ -7,10 +7,14 @@ import initNotify = require('../assets/js/notify.js');
 @Injectable()
 export class AuthenticationService {
     constructor(private http: Http) { }
-
-    login(username: string, password: string) {
-        return this.http.post("http://localhost:3002/api/user", { username: username, password: password })
-            .map((response: Response) => {
+    private handleError(error: any): Promise<any> {
+        //console.error('An error occurred', error); // for demo purposes only
+        initNotify("Error de conexión con base de datos", 4);
+        return Promise.reject(error.message || error);
+    }
+    login(username: string, password: string) : Promise<any>{
+        return this.http.post("http://localhost:3002/api/user", { username: username, password: password }).toPromise()
+            .then((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let user = response.json();
                 if (user.success) {
@@ -21,7 +25,7 @@ export class AuthenticationService {
                 else {
                     initNotify(user.message,4);
                 }
-            });
+            }).catch(this.handleError)
     }
 
     logout() {

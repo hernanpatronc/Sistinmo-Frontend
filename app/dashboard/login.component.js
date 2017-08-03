@@ -25,13 +25,11 @@ var LoginComponent = (function () {
     LoginComponent.prototype.onLogin = function () {
         var _this = this;
         this.authenticationService.login(this.user, this.password)
-            .subscribe(function (data) {
+            .then(function (data) {
             if (localStorage.getItem('currentUser')) {
-                console.log("Redirect");
                 _this.router.navigate(['./dashboard']);
                 initNotify("Bienvenido " + JSON.parse(localStorage.getItem('currentUser')).alias, 2);
             }
-        }, function (error) {
         });
     };
     LoginComponent = __decorate([

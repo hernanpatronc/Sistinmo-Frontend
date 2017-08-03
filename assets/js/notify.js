@@ -2,7 +2,6 @@ if ('undefined' !== typeof module) {
     inNotify = true;
     type = ['','info','success','warning','danger'];
     module.exports = function initNotify(message,color,from, align){
-        if(inNotify){
             $.notify({
                 icon: "pe-7s-gift",
                 message: message
@@ -14,7 +13,5 @@ if ('undefined' !== typeof module) {
                     align: align
                 }
             });
-            inNotify = false;
-        }
     }
 }

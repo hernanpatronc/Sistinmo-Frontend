@@ -17,11 +17,22 @@ var PropertyComponent = (function () {
         this.activatedRoute = activatedRoute;
         this.propiedadesService = propiedadesService;
         this.propiedad = new property_1.Property();
+        this.traders = [];
+        this.tipo_inmus = [];
+        this.estados = [];
+        this.paises = [];
+        this.provincias = [];
     }
     PropertyComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.propiedadesService.getFields().then(function (data) {
+            _this.traders = data.TRADER.split(",");
+            _this.tipo_inmus = data.TIPO_INMU.split(",");
+            _this.estados = data.ESTADO.split(",");
+            _this.paises = data.PAIS.split(",");
+            _this.provincias = data.ZONA.split(",");
+        });
         this.legajo = this.activatedRoute.snapshot.params['legajo'];
-        console.log(this.legajo);
         if (this.legajo != "new")
             this.propiedadesService.getProperty(this.legajo).then(function (propiedad) { return _this.propiedad = propiedad[0]; });
     };

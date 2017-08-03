@@ -29,7 +29,7 @@ declare var $:any;
                     animate('0.3s 0s ease-out')
                 ])
         ]),
-        trigger('carduser', [
+        /*trigger('carduser', [
             state('*', style({
                 '-ms-transform': 'translate3D(0px, 0px, 0px)',
                 '-webkit-transform': 'translate3D(0px, 0px, 0px)',
@@ -47,7 +47,7 @@ declare var $:any;
                     }),
                     animate('0.3s 0.25s ease-out')
                 ])
-        ]),
+        ]),*/
         trigger('card2014sales', [
             state('*', style({
                 '-ms-transform': 'translate3D(0px, 0px, 0px)',
@@ -67,7 +67,7 @@ declare var $:any;
                     animate('0.3s 0.5s ease-out')
                 ])
         ]),
-        trigger('cardtasks', [
+        /*trigger('cardtasks', [
             state('*', style({
                 '-ms-transform': 'translate3D(0px, 0px, 0px)',
                 '-webkit-transform': 'translate3D(0px, 0px, 0px)',
@@ -85,7 +85,7 @@ declare var $:any;
                     }),
                     animate('0.3s 0.75s ease-out')
                 ])
-        ])
+        ])*/
     ]
 
 
@@ -108,7 +108,7 @@ export class HomeComponent implements OnInit{
             var $checkbox = $(this);
             $checkbox.checkbox();
         });
-        this.propiedadesService.getStatistics().then(objeto => initDemo(objeto[0],objeto[1]) );
+        this.propiedadesService.getStatistics().then(objeto => initDemo(objeto.TIPO_INMU[1],objeto.TIPO_INMU[0],null,null,[objeto.PRODUCTORES[1],objeto.PRODUCTORES[2],objeto.PRODUCTORES[3]],objeto.PRODUCTORES[0] ));
         this.minutos = new Date();
     }
     getCurrentTime() : number {

@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
+var initNotify = require('../assets/js/notify.js');
 var PropiedadesService = (function () {
     function PropiedadesService(http) {
         this.http = http;
@@ -22,11 +23,12 @@ var PropiedadesService = (function () {
             .catch(this.handleError);
     }; // stub
     PropiedadesService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
+        //console.error('An error occurred', error); // for demo purposes only
+        initNotify("Error de conexión con base de datos", 4);
         return Promise.reject(error.message || error);
     };
     PropiedadesService.prototype.getStatistics = function () {
-        return this.http.get("http://localhost:3002/estadisticas")
+        return this.http.get("http://localhost:3002/api/estadisticas")
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
@@ -41,6 +43,12 @@ var PropiedadesService = (function () {
         return this.http.get("http://localhost:3002/api/user")
             .toPromise()
             .then(function (response) { return response.json().users; })
+            .catch(this.handleError);
+    };
+    PropiedadesService.prototype.getFields = function () {
+        return this.http.get("http://localhost:3002/api/fields")
+            .toPromise()
+            .then(function (response) { return response.json()[0]; })
             .catch(this.handleError);
     };
     PropiedadesService = __decorate([

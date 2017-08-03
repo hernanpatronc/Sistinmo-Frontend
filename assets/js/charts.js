@@ -1,6 +1,6 @@
 if ('undefined' !== typeof module) {
 
-    module.exports = function initDemo(series, label){
+    module.exports = function initDemo(series1, label1, series2,label2,series3,label3){
         var dataSales = {
             labels: ['9:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
             series: [
@@ -36,13 +36,10 @@ if ('undefined' !== typeof module) {
             }]
         ];
 
-        Chartist.Line('#chartHours', dataSales, optionsSales, responsiveSales);
+        //Chartist.Line('#chartHours', dataSales, optionsSales, responsiveSales);
         var dataActivity = {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            series: [
-                [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
-                [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695]
-            ]
+            labels: label3,
+            series: series3
         };
 
         var optionsActivity = {
@@ -76,17 +73,21 @@ if ('undefined' !== typeof module) {
             donutWidth: 40,
             startAngle: 0,
             total: 100,
+            //height: "245px",
             showLabel: false,
             axisX: {
                 showGrid: false
             }
         };
 
-        Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
+        //Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
 
         Chartist.Pie('#chartPreferences', {
-            series: series,
-            labels : label
+            series: series1,
+            labels : label1
+        }, {
+            height : "300px",
+            showLabel: true,
         });
 
 

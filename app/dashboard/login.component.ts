@@ -23,16 +23,12 @@ export class LoginComponent implements OnInit {
     }
     onLogin() {
         this.authenticationService.login(this.user, this.password)
-            .subscribe(
+            .then(
                 data => {
                     if (localStorage.getItem('currentUser')){
-                        console.log("Redirect");
                         this.router.navigate(['./dashboard']);
                         initNotify("Bienvenido " + JSON.parse(localStorage.getItem('currentUser')).alias, 2);
                     }
-                },
-                error => {
-                    
                 });
     }
 }

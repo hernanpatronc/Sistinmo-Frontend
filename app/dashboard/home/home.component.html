@@ -1,15 +1,15 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4">
-                <div class="card" [@cardemail]>
+            <div class="col-md-6">
+                <div class="card" style="height : 550px" [@cardemail]>
                     <div class="header">
                         <h4 class="title">Cantidad de propiedades</h4>
                         <p class="category">Segun el tipo de inmueble</p>
                     </div>
                     <div class="content">
-                        <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
-                        <div class="footer">
+                        <div id="chartPreferences" class="ct-chart"></div>
+                        <div class="footer" style="align-self : flex-end; flex:1 1 auto;">
                             <!--<div class="legend">
                                 <i class="fa fa-circle text-info"></i> Campos
                                 <i class="fa fa-circle text-danger"></i> Quintas
@@ -24,11 +24,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
+            <!--div class="col-md-6">
                 <div class="card" [@carduser]>
                     <div class="header">
-                        <h4 class="title">Users Behavior</h4>
-                        <p class="category">24 Hours performance</p>
+                        <h4 class="title"></h4>
+                        <p class="category">Considerando todos los legajos</p>
                     </div>
                     <div class="content">
                         <div id="chartHours" class="ct-chart"></div>
@@ -40,36 +40,36 @@
                             </div>
                             <hr>
                             <div class="stats">
-                                <i class="fa fa-history"></i> Updated 3 minutes ago
+                                <i class="fa fa-history"></i> Actualizado hace {{getCurrentTime()}} minutos
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div-->
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card" [@card2014sales] >
                     <div class="header">
-                        <h4 class="title">2014 Sales</h4>
-                        <p class="category">All products including Taxes</p>
+                        <h4 class="title">Performance de los asociados</h4>
+                        <p class="category">Considerando todos los legajos</p>
                     </div>
                     <div class="content">
                         <div id="chartActivity" class="ct-chart"></div>
                         <div class="footer">
                             <div class="legend">
-                                <i class="fa fa-circle text-info"></i> Tesla Model S
-                                <i class="fa fa-circle text-danger"></i> BMW 5 Series
+                                <i class="fa fa-circle text-info"></i> Traders
+                                <i class="fa fa-circle text-danger"></i> Productores Ofr/Req
                             </div>
                             <hr>
                             <div class="stats">
-                                <i class="fa fa-check"></i> Data information certified
+                                <i class="fa fa-check"></i> Actualizado hace {{getCurrentTime()}} minutos
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <!--div class="col-md-6">
                 <div class="card" [@cardtasks]>
                     <div class="header">
                         <h4 class="title">Tasks</h4>
@@ -104,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div-->
         </div>
     </div>
 </div>

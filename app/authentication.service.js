@@ -16,9 +16,14 @@ var AuthenticationService = (function () {
     function AuthenticationService(http) {
         this.http = http;
     }
+    AuthenticationService.prototype.handleError = function (error) {
+        //console.error('An error occurred', error); // for demo purposes only
+        initNotify("Error de conexión con base de datos", 4);
+        return Promise.reject(error.message || error);
+    };
     AuthenticationService.prototype.login = function (username, password) {
-        return this.http.post("http://localhost:3002/api/user", { username: username, password: password })
-            .map(function (response) {
+        return this.http.post("http://localhost:3002/api/user", { username: username, password: password }).toPromise()
+            .then(function (response) {
             // login successful if there's a jwt token in the response
             var user = response.json();
             if (user.success) {
@@ -29,7 +34,7 @@ var AuthenticationService = (function () {
             else {
                 initNotify(user.message, 4);
             }
-        });
+        }).catch(this.handleError);
     };
     AuthenticationService.prototype.logout = function () {
         // remove user from local storage to log user out
