@@ -11,10 +11,10 @@ import { SidebarModule } from './sidebar/sidebar.module';
 import { NavbarModule} from './shared/navbar/navbar.module';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { PropiedadesService } from './propiedades.service';
+import { PropiedadesService } from './services/propiedades.service';
 import { FormsModule } from '@angular/forms';
-import { AuthenticationService } from './authentication.service';
-import { AuthGuard, AdminGuard } from './auth.guard';
+import { AuthenticationService } from './services/authentication.service';
+import { AuthGuard, AdminGuard } from './authentication/auth.guard';
 
 
 @NgModule({

@@ -7,9 +7,9 @@ import { TableComponent } from './table/table.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { TypographyComponent } from './typography/typography.component';
 import { MapsComponent } from './maps/maps.component';
-import { LoginComponent } from './login.component';
+import { LoginComponent } from './login/login.component';
 import { PropertyComponent } from './property/property.component';
-import { AuthGuard,AdminGuard } from '../auth.guard';
+import { AuthGuard,AdminGuard } from '../authentication/auth.guard';
 
 export const MODULE_ROUTES: Route[] =[
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },

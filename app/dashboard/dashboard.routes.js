@@ -6,9 +6,9 @@ var table_component_1 = require('./table/table.component');
 var notifications_component_1 = require('./notifications/notifications.component');
 var typography_component_1 = require('./typography/typography.component');
 var maps_component_1 = require('./maps/maps.component');
-var login_component_1 = require('./login.component');
+var login_component_1 = require('./login/login.component');
 var property_component_1 = require('./property/property.component');
-var auth_guard_1 = require('../auth.guard');
+var auth_guard_1 = require('../authentication/auth.guard');
 exports.MODULE_ROUTES = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: home_component_1.HomeComponent, canActivate: [auth_guard_1.AuthGuard] },

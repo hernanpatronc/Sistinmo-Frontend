@@ -1,6 +1,6 @@
 import {Component, OnInit,AfterViewInit,trigger,state,style,transition,animate,keyframes} from '@angular/core';
-import { Property } from '../../property';
-import { PropiedadesService } from '../../propiedades.service';
+import { Property } from '../../models/property';
+import { PropiedadesService } from '../../services/propiedades.service';
 import { Router } from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import { FormsModule } from '@angular/forms';

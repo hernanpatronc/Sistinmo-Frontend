@@ -18,10 +18,10 @@ var dashboard_module_1 = require('./dashboard/dashboard.module');
 var sidebar_module_1 = require('./sidebar/sidebar.module');
 var navbar_module_1 = require('./shared/navbar/navbar.module');
 var common_1 = require('@angular/common');
-var propiedades_service_1 = require('./propiedades.service');
+var propiedades_service_1 = require('./services/propiedades.service');
 var forms_1 = require('@angular/forms');
-var authentication_service_1 = require('./authentication.service');
-var auth_guard_1 = require('./auth.guard');
+var authentication_service_1 = require('./services/authentication.service');
+var auth_guard_1 = require('./authentication/auth.guard');
 var AppModule = (function () {
     function AppModule() {
     }

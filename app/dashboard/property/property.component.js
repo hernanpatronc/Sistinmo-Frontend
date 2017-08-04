@@ -10,10 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var property_1 = require('../../property');
-var propiedades_service_1 = require('../../propiedades.service');
+var property_1 = require('../../models/property');
+var propiedades_service_1 = require('../../services/propiedades.service');
 var PropertyComponent = (function () {
-    function PropertyComponent(activatedRoute, propiedadesService) {
+    function PropertyComponent(router, activatedRoute, propiedadesService) {
+        this.router = router;
         this.activatedRoute = activatedRoute;
         this.propiedadesService = propiedadesService;
         this.propiedad = new property_1.Property();
@@ -31,7 +32,7 @@ var PropertyComponent = (function () {
             _this.estados = data.ESTADO.split(",");
             _this.paises = data.PAIS.split(",");
             _this.provincias = data.ZONA.split(",");
-        });
+        }).catch(function (err) { return _this.router.navigate(["/login"]); });
         this.legajo = this.activatedRoute.snapshot.params['legajo'];
         if (this.legajo != "new")
             this.propiedadesService.getProperty(this.legajo).then(function (propiedad) { return _this.propiedad = propiedad[0]; });
@@ -83,7 +84,7 @@ var PropertyComponent = (function () {
                 ])
             ]
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, propiedades_service_1.PropiedadesService])
+        __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, propiedades_service_1.PropiedadesService])
     ], PropertyComponent);
     return PropertyComponent;
 }());

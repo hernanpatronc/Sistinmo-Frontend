@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { MODULE_COMPONENTS, MODULE_ROUTES } from './dashboard.routes';
 import { FormsModule } from '@angular/forms';
 
@@ -10,7 +10,8 @@ import { FormsModule } from '@angular/forms';
         CommonModule,
         FormsModule
     ],
-    declarations: [ MODULE_COMPONENTS ]
+    declarations: [ MODULE_COMPONENTS ],
+    providers : [RouterModule]
 })
 
 export class DashboardModule{}

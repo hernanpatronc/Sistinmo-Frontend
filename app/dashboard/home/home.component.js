@@ -10,11 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var initDemo = require('../../../assets/js/charts.js');
-var propiedades_service_1 = require('../../propiedades.service');
+var propiedades_service_1 = require('../../services/propiedades.service');
+var router_1 = require('@angular/router');
 var HomeComponent = (function () {
-    function HomeComponent(propiedadesService) {
+    function HomeComponent(propiedadesService, router) {
         this.propiedadesService = propiedadesService;
+        this.router = router;
         this.tasks = []; //["Unfollow 5 enemies from twitter", "Read \"Following makes Medium better\"", "Create 4 Invisible User Experiences you Never Knew About","Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit","Lines From Great Russian Literature? Or E-mails From My Boss?","Sign contract for \"What are conference organizers afraid of?\""];
+        this.colors = ["#1DC7EA", "#9368E9", "#FB404B", "#87CB16", "#FFA534", "#1F77D0", "#5e5e5e", "#3b5998", "#55acee", "#cc2127", "#dd4b39"];
+        this.tipos_inmu = [];
     }
     HomeComponent.prototype.deleteTask = function (task) {
         this.tasks.splice(this.tasks.indexOf(task), 1);
@@ -22,13 +26,17 @@ var HomeComponent = (function () {
     HomeComponent.prototype.ngOnInit = function () {
         // $.getScript('../../../assets/js/bootstrap-checkbox-radio-switch.js');
         // $.getScript('../../../assets/js/light-bootstrap-dashboard.js');
+        var _this = this;
         $('[data-toggle="checkbox"]').each(function () {
             if ($(this).data('toggle') == 'switch')
                 return;
             var $checkbox = $(this);
             $checkbox.checkbox();
         });
-        this.propiedadesService.getStatistics().then(function (objeto) { return initDemo(objeto.TIPO_INMU[1], objeto.TIPO_INMU[0], null, null, [objeto.PRODUCTORES[1], objeto.PRODUCTORES[2], objeto.PRODUCTORES[3]], objeto.PRODUCTORES[0]); });
+        this.propiedadesService.getStatistics().then(function (objeto) {
+            initDemo(objeto.TIPO_INMU[1], objeto.TIPO_INMU[0], null, null, [objeto.PRODUCTORES[1], objeto.PRODUCTORES[2], objeto.PRODUCTORES[3]], objeto.PRODUCTORES[0]);
+            _this.tipos_inmu = objeto.TIPO_INMU[0];
+        });
         this.minutos = new Date();
     };
     HomeComponent.prototype.getCurrentTime = function () {
@@ -100,7 +108,7 @@ var HomeComponent = (function () {
                 ]),
             ]
         }), 
-        __metadata('design:paramtypes', [propiedades_service_1.PropiedadesService])
+        __metadata('design:paramtypes', [propiedades_service_1.PropiedadesService, router_1.Router])
     ], HomeComponent);
     return HomeComponent;
 }());

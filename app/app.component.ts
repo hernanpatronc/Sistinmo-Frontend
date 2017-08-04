@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
-import { Property } from './property';
-import { PropiedadesService } from './propiedades.service';
+import { Property } from './models/property';
+import { PropiedadesService } from './services/propiedades.service';
 
 
 @Component({

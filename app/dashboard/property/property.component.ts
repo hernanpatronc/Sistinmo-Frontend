@@ -1,7 +1,7 @@
 import { Component,state,style,animate,transition, trigger, keyframes } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import { Property } from '../../property';
-import { PropiedadesService } from '../../propiedades.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import { Property } from '../../models/property';
+import { PropiedadesService } from '../../services/propiedades.service';
 import { FormsModule } from '@angular/forms';
 import initNotify = require('../../../assets/js/notify.js');
 
@@ -53,7 +53,7 @@ import initNotify = require('../../../assets/js/notify.js');
     })
 
     export class PropertyComponent{ 
-        constructor(private activatedRoute : ActivatedRoute, private propiedadesService:PropiedadesService){}
+        constructor(private router : Router, private activatedRoute : ActivatedRoute, private propiedadesService:PropiedadesService){}
         legajo:string;
         propiedad = new Property();
         traders= [];
@@ -68,7 +68,7 @@ import initNotify = require('../../../assets/js/notify.js');
                 this.estados = data.ESTADO.split(",");
                 this.paises = data.PAIS.split(",");
                 this.provincias = data.ZONA.split(",");
-            });
+            }).catch(err => this.router.navigate(["/login"]));
             this.legajo = this.activatedRoute.snapshot.params['legajo'];
             if (this.legajo != "new")
                 this.propiedadesService.getProperty(this.legajo).then(propiedad => this.propiedad = propiedad[0]);

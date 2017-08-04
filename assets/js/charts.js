@@ -86,8 +86,7 @@ if ('undefined' !== typeof module) {
             series: series1,
             labels : label1
         }, {
-            height : "300px",
-            showLabel: true,
+            showLabel: false,
         });
 
 

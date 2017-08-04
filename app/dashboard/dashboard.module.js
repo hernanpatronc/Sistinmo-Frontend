@@ -23,7 +23,8 @@ var DashboardModule = (function () {
                 common_1.CommonModule,
                 forms_1.FormsModule
             ],
-            declarations: [dashboard_routes_1.MODULE_COMPONENTS]
+            declarations: [dashboard_routes_1.MODULE_COMPONENTS],
+            providers: [router_1.RouterModule]
         }), 
         __metadata('design:paramtypes', [])
     ], DashboardModule);

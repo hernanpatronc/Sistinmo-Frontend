@@ -3,7 +3,7 @@ if ('undefined' !== typeof module) {
     type = ['','info','success','warning','danger'];
     module.exports = function initNotify(message,color,from, align){
             $.notify({
-                icon: "pe-7s-gift",
+                icon: "pe-7s-bell",
                 message: message
             },{
                 type: type[color],
