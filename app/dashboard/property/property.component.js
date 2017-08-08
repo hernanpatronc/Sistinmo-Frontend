@@ -23,6 +23,7 @@ var PropertyComponent = (function () {
         this.estados = [];
         this.paises = [];
         this.provincias = [];
+        this.fechaString = "";
     }
     PropertyComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -34,8 +35,12 @@ var PropertyComponent = (function () {
             _this.provincias = data.ZONA.split(",");
         }).catch(function (err) { return _this.router.navigate(["/login"]); });
         this.legajo = this.activatedRoute.snapshot.params['legajo'];
-        if (this.legajo != "new")
-            this.propiedadesService.getProperty(this.legajo).then(function (propiedad) { return _this.propiedad = propiedad[0]; });
+        if (this.legajo != "new") {
+            this.propiedadesService.getProperty(this.legajo).then(function (propiedad) {
+                _this.propiedad = propiedad[0];
+                _this.fechaString = (_this.propiedad.FECHA).toString().substr(0, _this.propiedad.FECHA.toString().length - 2);
+            });
+        }
     };
     PropertyComponent = __decorate([
         core_1.Component({

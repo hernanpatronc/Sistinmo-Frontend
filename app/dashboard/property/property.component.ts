@@ -61,6 +61,7 @@ import initNotify = require('../../../assets/js/notify.js');
         estados = [];
         paises = [];
         provincias = [];
+        fechaString = "";
         ngOnInit(){
             this.propiedadesService.getFields().then(data => {
                 this.traders = data.TRADER.split(",");
@@ -70,7 +71,13 @@ import initNotify = require('../../../assets/js/notify.js');
                 this.provincias = data.ZONA.split(",");
             }).catch(err => this.router.navigate(["/login"]));
             this.legajo = this.activatedRoute.snapshot.params['legajo'];
-            if (this.legajo != "new")
-                this.propiedadesService.getProperty(this.legajo).then(propiedad => this.propiedad = propiedad[0]);
+            if (this.legajo != "new"){
+                this.propiedadesService.getProperty(this.legajo).then(propiedad => {
+                    this.propiedad = propiedad[0];
+                    this.fechaString = (this.propiedad.FECHA).toString().substr(0,this.propiedad.FECHA.toString().length-2);
+                });
+
+            }
+                
         }
     }
