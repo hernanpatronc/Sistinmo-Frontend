@@ -12,16 +12,30 @@ var core_1 = require('@angular/core');
 var propiedades_service_1 = require('../../services/propiedades.service');
 var router_1 = require('@angular/router');
 var router_2 = require('@angular/router');
+var initNotify = require('../../../assets/js/notify.js');
 var UserComponent = (function () {
     function UserComponent(propiedadesService, router, activatedRoute) {
         this.propiedadesService = propiedadesService;
         this.router = router;
         this.activatedRoute = activatedRoute;
+        this.isAdmin = JSON.parse(localStorage.getItem('currentUser')).privileges == -1;
         this.getUsers();
     }
+    UserComponent.prototype.ngOnInit = function () {
+        this.user = {
+            username: "",
+            password: "",
+            privileges: 0,
+            alias: ""
+        };
+    };
     UserComponent.prototype.getUsers = function () {
         var _this = this;
         this.propiedadesService.getUsers().then(function (users) { return _this.users = users; });
+    };
+    UserComponent.prototype.newUser = function () {
+        console.log(this.user);
+        this.propiedadesService.postUser(this.user).then(function (resp) { return initNotify("Usuario creado", 2); });
     };
     UserComponent.prototype.updateUserPriv = function (user) {
         //this.router.navigate(['../user', property.LEGAJO],{relativeTo : this.activatedRoute});
@@ -39,9 +53,11 @@ var UserComponent = (function () {
                         '-moz-transform': 'translate3D(0px, 0px, 0px)',
                         '-o-transform': 'translate3D(0px, 0px, 0px)',
                         transform: 'translate3D(0px, 0px, 0px)',
-                        opacity: 1 })),
+                        opacity: 1
+                    })),
                     core_1.transition('void => *', [
-                        core_1.style({ opacity: 0,
+                        core_1.style({
+                            opacity: 0,
                             '-ms-transform': 'translate3D(0px, 150px, 0px)',
                             '-webkit-transform': 'translate3D(0px, 150px, 0px)',
                             '-moz-transform': 'translate3D(0px, 150px, 0px)',
@@ -58,9 +74,11 @@ var UserComponent = (function () {
                         '-moz-transform': 'translate3D(0px, 0px, 0px)',
                         '-o-transform': 'translate3D(0px, 0px, 0px)',
                         transform: 'translate3D(0px, 0px, 0px)',
-                        opacity: 1 })),
+                        opacity: 1
+                    })),
                     core_1.transition('void => *', [
-                        core_1.style({ opacity: 0,
+                        core_1.style({
+                            opacity: 0,
                             '-ms-transform': 'translate3D(0px, 150px, 0px)',
                             '-webkit-transform': 'translate3D(0px, 150px, 0px)',
                             '-moz-transform': 'translate3D(0px, 150px, 0px)',

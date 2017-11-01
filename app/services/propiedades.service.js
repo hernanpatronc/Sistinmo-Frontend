@@ -75,6 +75,21 @@ var PropiedadesService = (function () {
         })
             .catch(this.handleError);
     };
+    PropiedadesService.prototype.postUser = function (user) {
+        return this.http.post("http://localhost:3002/api/user/new?token=" + localStorage.getItem('token').replace(/"/g, ''), {
+            new_user: user,
+            user: localStorage.getItem('currentUser')
+        })
+            .toPromise()
+            .then(function (response) {
+            if (response.json()["success"])
+                return true;
+            else {
+                initNotify(response.json()["message"], 4);
+            }
+        })
+            .catch(this.handleError);
+    };
     PropiedadesService.prototype.getFields = function () {
         var _this = this;
         return this.http.get("http://localhost:3002/api/fields?token=" + localStorage.getItem('token').replace(/"/g, ''))
